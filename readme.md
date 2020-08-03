@@ -59,7 +59,7 @@ $ mis> cdp budget show --monthly
 | us-rmd-500 | I will provide you with desktop tools for the office     |        60 | monthly |
 | be-ant-245 | I will provide you with desks and chairs                 |       100 | monthly |
 | uk-lon-222 | I will setup and maintain your wordpress websote         |        20 | monthly |
-|            | subscribed to 6 monthly services                         |      653  | monthly |  
+|            | subscribed to 6 monthly services                         |       653 | monthly |  
                                             
 In the previous example we let CardStep look for the required services. We now are going to show the same process but then with our own preferred services.
 
