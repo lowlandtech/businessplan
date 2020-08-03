@@ -48,20 +48,19 @@ $ mis> cdp plan add wordpress-website --budget 20 --monthly --type freelance --d
 If we want to show our current projected costs per month we run:
 
 ````bash
-$ mis> cdp budget show --monthly
-
-handle     description                                              budget    period      
----------- -------------------------------------------------------- --------- -------
-nl-ams-123 I will consult on accounting and monitor your financials       149 monthly 
-nl-rot-165 I will prepare your monthly and yearly taxes                    99 monthly
-nl-ams-014 I will provide with office space                               225 monthly
-us-rmd-500 I will provide you with desktop tools for the office            60 monthly
-be-ant-245 I will provide you with desks and chairs                       100 monthly
-uk-lon-222 I will setup and maintain your wordpress websote                20 monthly
--------------------------------------------------------------------------------------
-subscribed to 6 monthly services                                          653 monthly                                                   
+$ mis> cdp budget show --monthly                                                 
 ````
 
+| code       | description                                              | budget    | period  |    
+| ---------- | -------------------------------------------------------- | --------: | ------- |
+| nl-ams-123 | I will consult on accounting and monitor your financials |       149 | monthly |
+| nl-rot-165 | I will prepare your monthly and yearly taxes             |        99 | monthly |
+| nl-ams-014 | I will provide with office space                         |       225 | monthly |
+| us-rmd-500 | I will provide you with desktop tools for the office     |        60 | monthly |
+| be-ant-245 | I will provide you with desks and chairs                 |       100 | monthly |
+| uk-lon-222 | I will setup and maintain your wordpress websote         |        20 | monthly |
+|            | subscribed to 6 monthly services                         |      653  | monthly |  
+                                            
 In the previous example we let CardStep look for the required services. We now are going to show the same process but then with our own preferred services.
 
 ````bash
@@ -101,8 +100,8 @@ $ mis> cdp provider create @igor_1981 --budget 50 --hourly --hours 40 --shift 8,
 All values given above are the default values so typing the short version would yield the same result.
 
 ````bash
-$ mis> cdp provider create @wendellmva
-$ mis> cdp provider create @igor_1981
+$ mis> cdp provider create @wendellmva --location almere
+$ mis> cdp provider create @igor_1981 --location eindhoven
 ````
 
 If you want to know the default config values for a (function) group:
@@ -135,15 +134,26 @@ $ mis> cdp service create "I will develop components" --price 75 --hourly --prov
 
 $ mis> cdp service create "I will manage your project" --price 75 --hourly --providers igor --tags "angular,vue,react,c#,azure-devops" --cover "https://cardstrip/images/projects.jpg"
 
-$ mis> cdp service create "I will create your c# microservice" --price 75 --hourly --providers wendell --tags "c#,asp.net,docker,linux"
-
+$ mis> cdp service create "I will create your c# microservice" --price 75 --hourly --providers wendell --tags "c#,asp.net,docker,linux" --cover "https://cardstrip/images/microservices.jpg"
 ````
 
 Now that we got our services lets have a look at the services dashboard
 
 ````bash
 $ mis> cdp budget show --monthly
-
-handle     description                                              budget    period      
----------- -------------------------------------------------------- --------- -------
 ````
+
+| code       | description                                              | budget | period  |
+| ---------- | -------------------------------------------------------- | -----: | ------- |
+| nl-ams-123 | I will consult on accounting and monitor your financials |    149 | monthly |
+| nl-rot-165 | I will prepare your monthly and yearly taxes             |     99 | monthly |
+| nl-ams-014 | I will provide with office space                         |    225 | monthly |
+| us-rmd-500 | I will provide you with desktop tools for the office     |     60 | monthly |
+| be-ant-245 | I will provide you with desks and chairs                 |    100 | monthly |
+| uk-lon-222 | I will setup and maintain your WordPress website         |     20 | monthly |
+| us-nyc-789 | I will write some copy for your website                  |   2165 | monthly |
+| nl-utr-875 | I will develop, configure your WordPress plugins         |   1732 | monthly |
+| nl-utr-875 | I will find customers and sell your services             |   3464 | monthly |
+| nl-alm-wen | @wendellmva as provider                                  |   8666 | monthly |
+| nl-ehv-igo | @igor_1981 as provider                                   |   8666 | monthly |
+|            | Subscribed to 11 monthly services                        |  24693 | monthly |
