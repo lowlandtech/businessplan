@@ -1,0 +1,42 @@
+# Application composition
+
+- App
+  - Node
+    - Accounts
+      - State
+      - Wallet
+        - PPK
+          - Events
+  - Configuration
+  - Queues
+  - Settings
+    - Dot notation key value pair 
+  - Migrations
+  - Plugins
+    - Claim
+      - Roles
+    - Context
+      - Entities
+    - Routes
+    - Hubs
+    - Files
+  - Users
+    - Settings
+  - Tenants
+    - Settings
+  - Client
+    - Settings
+    - Themes
+    - Packages
+    - State
+      - Navigation
+      - Configuration
+      - User
+        - Settings
+        - Roles
+      - Models
+    - Events
+      - Hubs
+      - Actions
+      - Reducers
+      - Effects

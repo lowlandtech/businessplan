@@ -1,0 +1,25 @@
+# How to setup a free blog on github
+
+- [What site generator to use: Gatsby](https://next.gatsbyjs.org/)
+- [What headless cms to use: strapi](https://strapi.io/)
+- [What theme to use: fake twitter](https://github.com/olegsmetanin/olegsmetanin.github.io/tree/dev)
+- [How to deploy blog for free on github pages](https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/)
+- [How to setup a custom domain github pages]
+
+### Subject for blog
+
+- App Theory
+  - Don't code generate
+  - AppHost
+  - AppContent
+    - Navigation
+    - View
+  - AppTheme
+  - Form container
+  - Meta endpoint
+
+- Ten things I hate about node
+  - localstorage
+  - focus on dependency management instead of application composition
+  - Low quality of packages
+  - 
