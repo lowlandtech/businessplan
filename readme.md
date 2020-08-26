@@ -16,13 +16,13 @@ The entire blockchain is centered to creating autonomous organizations, services
 The following example creates a Dutch organization with the euro as its base currency.
 
 ````bash
-$> cdp organization create mis --description "My Incredible Startup" --locale nl-EN --currency EUR
-$> cd mis
+$ repositories> llt organization create mis --description "My Incredible Startup" --locale nl-EN --currency EUR
+$ repositories> cd mis
 ````
 Any description entered for this organization will be assumed to be entered in nl-EN. An organization supports multiple locales as follows:
 
 ````bash
-$> cdp locale add nl-NL
+$ repositories> llt locale add nl-NL
 ````
 
 This will create tasks to add a localized value for every description in the organization.
@@ -32,23 +32,23 @@ This will create tasks to add a localized value for every description in the org
 The blockchain will look for a service that is tagged with accounting in the tax scheme nl in the language EN. It will look for something that cost 200 euro or less per month. If it finds more than one it will select and subscribe to the highest rated accounting service.
 
 ````bash
-$ mis> cdp plan add accounting --budget 200 --monthly
+$ mis> llt plan add accounting --budget 200 --monthly
 ````
 
 Lets add a few more services we need to run our business
 
 ````bash
-$ mis> cdp plan add tax-help-plan --budget 200 --monthly
-$ mis> cdp plan add office-space --budget 600 --monthly --workspaces 4
-$ mis> cdp plan add ms-office --monthly --licenses 4
-$ mis> cdp plan add desk-lease chair-lease --budget 75 --monthly --qty 4
-$ mis> cdp plan add wordpress-website --budget 20 --monthly --type freelance --domain my-startup.io
+$ mis> llt plan add tax-help-plan --budget 200 --monthly
+$ mis> llt plan add office-space --budget 600 --monthly --workspaces 4
+$ mis> llt plan add ms-office --monthly --licenses 4
+$ mis> llt plan add desk-lease chair-lease --budget 75 --monthly --qty 4
+$ mis> llt plan add wordpress-website --budget 20 --monthly --type freelance --domain my-startup.io
 ````
 
 If we want to show our current projected costs per month we run:
 
 ````bash
-$ mis> cdp budget show --monthly                                                 
+$ mis> llt budget show --monthly                                                 
 ````
 
 | code       | description                                              | budget    | period  |    
@@ -64,15 +64,15 @@ $ mis> cdp budget show --monthly
 In the previous example we let Stepacard look for the required services. We now are going to show the same process but then with our own preferred services.
 
 ````bash
-$ mis> cdp plan add copywriter --handle us-nyc-789 --budget 50 --hourly --contract 10
-$ mis> cdp plan add wordpress-expert --handle nl-utr-875 --budget 20 --hourly --contract 20
-$ mis> cdp plan add sales-person --handle uk-man-947 --budget 20 --hourly --contract 40
+$ mis> llt plan add copywriter --handle us-nyc-789 --budget 50 --hourly --contract 10
+$ mis> llt plan add wordpress-expert --handle nl-utr-875 --budget 20 --hourly --contract 20
+$ mis> llt plan add sales-person --handle uk-man-947 --budget 20 --hourly --contract 40
 ````
 
 If we want to see our total budget with the updated services we can again type:
 
 ````bash
-$ mis> cdp budget show --monthly                                                  
+$ mis> llt budget show --monthly                                                  
 ````
 
 | code       | description                                              | budget | period  |
@@ -93,21 +93,21 @@ $ mis> cdp budget show --monthly
 We need to create service providers first. Let's create two Wendell and Igor.
 
 ````bash
-$ mis> cdp provider create @wendellmva --budget 50 --hourly --hours 40 --shift 8,8,8,8,8 --start 0900 --pto 200
-$ mis> cdp provider create @igor_1981 --budget 50 --hourly --hours 40 --shift 8,8,8,8,8 --start 0900 --pto 200
+$ mis> llt provider create @wendellmva --budget 50 --hourly --hours 40 --shift 8,8,8,8,8 --start 0900 --pto 200
+$ mis> llt provider create @igor_1981 --budget 50 --hourly --hours 40 --shift 8,8,8,8,8 --start 0900 --pto 200
 ````
 
 All values given above are the default values so typing the short version would yield the same result.
 
 ````bash
-$ mis> cdp provider create @wendellmva --location almere
-$ mis> cdp provider create @igor_1981 --location eindhoven
+$ mis> llt provider create @wendellmva --location almere
+$ mis> llt provider create @igor_1981 --location eindhoven
 ````
 
 If you want to know the default config values for a (function) group:
 
 ````bash
-$ mis> cdp config list --group provider
+$ mis> llt config list --group provider
 ````
 
 | config        | value     | description                       | group    |
@@ -122,7 +122,7 @@ $ mis> cdp config list --group provider
 Changing a default configuration value:
 
 ````bash
-$ mis> cdp config update budget 50 --group provider
+$ mis> llt config update budget 50 --group provider
 ````
 
 If you don't provide a group all config's named budget will be update. The default value only changes for newly to create providers. Changing the config settings does not affect the providers already created.
@@ -130,17 +130,17 @@ If you don't provide a group all config's named budget will be update. The defau
 Now that we have our service providers lets create some services.
 
 ````bash
-$ mis> cdp service create "I will develop components" --price 75 --hourly --providers wendell,igor --tags "angular,vue,react,c#" --cover "https://cardstrip/images/components.jpg"
+$ mis> llt service create "I will develop components" --price 75 --hourly --providers wendell,igor --tags "angular,vue,react,c#" --cover "https://cardstrip/images/components.jpg"
 
-$ mis> cdp service create "I will manage your project" --price 75 --hourly --providers igor --tags "angular,vue,react,c#,azure-devops" --cover "https://cardstrip/images/projects.jpg"
+$ mis> llt service create "I will manage your project" --price 75 --hourly --providers igor --tags "angular,vue,react,c#,azure-devops" --cover "https://cardstrip/images/projects.jpg"
 
-$ mis> cdp service create "I will create your c# microservice" --price 75 --hourly --providers wendell --tags "c#,asp.net,docker,linux" --cover "https://cardstrip/images/microservices.jpg"
+$ mis> llt service create "I will create your c# microservice" --price 75 --hourly --providers wendell --tags "c#,asp.net,docker,linux" --cover "https://cardstrip/images/microservices.jpg"
 ````
 
 Now that we got our services lets have a look at the services dashboard
 
 ````bash
-$ mis> cdp budget show --monthly
+$ mis> llt budget show --monthly
 ````
 
 | code       | description                                              | budget | period  |
