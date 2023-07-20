@@ -1,15 +1,15 @@
 #### Node
 
-A CardStrip node is a console application that which location needs to be placed in a PATH folder so that it can function as a cli to give access to the CardStrip Network by processing commands.
+A LowlandTech node is a console application that which location needs to be placed in a PATH folder so that it can function as a cli to give access to the LowlandTech Network by processing commands.
 
 ````shell
-c:\> cs wallet new --password ******* --path c:\myWallet.dat
+c:\> llt wallet new --password ******* --path c:\myWallet.dat
 ````
 
 Or 
 
 ````shell
-c:\> cs key new --password ******* --path c:\myWallet.dat
+c:\> llt key new --password ******* --path c:\myWallet.dat
 ````
 
 The node can also be used to start up the wallet ui.
@@ -17,25 +17,25 @@ The node can also be used to start up the wallet ui.
 
 
 ````shell
-c:\> cs --shell true --port 7895
+c:\> llt --shell true --port 7895
 ````
 
-The above are the default parameters which the CardStrip cli uses for the user wallet.
+The above are the default parameters which the LowlandTech cli uses for the user wallet.
 
 
 
-#### UnitOfWork
+#### LowlandTechClient
 
 The unit of work combines all the data sources that the current cardstrip node uses to interact with the network, the blockchain and the database.
 
 ````c#
-var uof = new UnitOfWork();
+var client = new LowlandTechClient();
 ````
 
 Examples of the Unit of Work interface:
 
 ````c#
-public interface IUnitOfWork {
+public interface ILowlandTechClient {
   Guid SessionId { get; }
   List<IWallet> Wallets { get; }
   IBlockchain Blockchain { get; }
@@ -47,19 +47,19 @@ public interface IUnitOfWork {
 and 
 
 ````c#
-uof.Blockchain.Blocks;
-uof.Blockchain.Blocks.First().Headers();
-uof.Blockchain.Blocks.First().Transactions(); // all transactions recorded in this block ...
-uof.Blockchain.Uxtos;
-uof.Blockchain.Transactions; // all transactions ever recorded on the blockchain ...
-uof.Wallets.First().Transactions; // all transactions made by all the keys in this wallet ...
-uof.Wallets.First().Keys;
-uof.Wallets.First().Account.Transactions; // all transactions monitored by this account ...
-uof.Database.SmartContracts; // all known smartcontracts by this node ...
-uof.Database.Cards; // all private and public smartcontract metadata ...
+client.Blockchain.Blocks;
+client.Blockchain.Blocks.First().Headers();
+client.Blockchain.Blocks.First().Transactions(); // all transactions recorded in this block ...
+client.Blockchain.Uxtos;
+client.Blockchain.Transactions; // all transactions ever recorded on the blockchain ...
+client.Wallets.First().Transactions; // all transactions made by all the keys in this wallet ...
+client.Wallets.First().Keys;
+client.Wallets.First().Account.Transactions; // all transactions monitored by this account ...
+client.Database.SmartContracts; // all known smartcontracts by this node ...
+client.Database.Cards; // all private and public smartcontract metadata ...
 ````
 
-The unit of work will be a unified interface to manipulate the node data and all manipulations on it are either extension methods hanging off IUnitOfWork or are of IAction methods that are executed by the wallet job manager.
+The unit of work will be a unified interface to manipulate the node data and all manipulations on it are either extension methods hanging off ILowlandTechClient or are of IAction methods that are executed by the wallet job manager.
 
 
 
@@ -68,7 +68,7 @@ The unit of work will be a unified interface to manipulate the node data and all
 To open the wallet,  the wallet location must be given and the wallet password with which the file was encrypted. The UoW knows the following extension method:
 
 ````c#
-var wallet = uof.OpenWallet("c:/myWallet.dat", "********");
+var wallet = client.OpenWallet("c:/myWallet.dat", "********");
 ````
 
 
@@ -112,6 +112,6 @@ The private key is automatically saved in the wallet file. At this point the nod
 
 
 ````c#
-uof.Wallets.Add(wallet);
+client.Wallets.Add(wallet);
 ````
 
