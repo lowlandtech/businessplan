@@ -26,13 +26,13 @@ The above are the default parameters which the LowlandTech cli uses for the user
 
 #### LowlandTechClient
 
-The unit of work combines all the data sources that the current cardstrip node uses to interact with the network, the blockchain and the database.
+The client combines all the data sources that the current cardstrip node uses to interact with the network, the blockchain and the database.
 
 ````c#
 var client = new LowlandTechClient();
 ````
 
-Examples of the Unit of Work interface:
+Examples of the LowlandTechClient interface:
 
 ````c#
 public interface ILowlandTechClient {
@@ -56,10 +56,10 @@ client.Wallets.First().Transactions; // all transactions made by all the keys in
 client.Wallets.First().Keys;
 client.Wallets.First().Account.Transactions; // all transactions monitored by this account ...
 client.Database.SmartContracts; // all known smartcontracts by this node ...
-client.Database.Cards; // all private and public smartcontract metadata ...
+client.Database.Notes; // all private and public smartcontract metadata ...
 ````
 
-The unit of work will be a unified interface to manipulate the node data and all manipulations on it are either extension methods hanging off ILowlandTechClient or are of IAction methods that are executed by the wallet job manager.
+The client will be a unified interface to manipulate the node data and all manipulations on it are either extension methods hanging off ILowlandTechClient or are of IAction methods that are executed by the wallet job manager.
 
 
 
